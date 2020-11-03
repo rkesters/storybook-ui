@@ -115,7 +115,7 @@ export const SiderBar: FunctionComponent<SiderBarProps> = (args) => {
 								component: NavLink,
 								to: m.linkTo,
 								activeClassName: 'Mui-selected',
-								button: true
+								button: true as (true | undefined)
 						  }
 						: {
 								onClick: (event: React.MouseEvent) => {
