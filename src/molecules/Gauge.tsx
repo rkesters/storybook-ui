@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme: Theme) => {
 	return {
 		root: {
 			textAlign: "center",
+			
 		},
 		svg: {
 			overflow: "visible",
