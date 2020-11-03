@@ -1,0 +1,36 @@
+.logo {
+	height: 32px;
+	margin: 16px;
+    background: @bonfire-primary;
+    color: @bonfire-secondary;
+    font-size: 20pt;
+    text-align: center;
+}
+.site-layout .site-layout-background {
+	background: #fff;
+}
+
+.bonfire {
+	.ant-layout-sider-children {
+		background: @bonfire-primary;
+
+		.ant-menu {
+			background: @bonfire-primary;
+			.ant-menu-item-selected {
+				background: @bonfire-highlight;
+				color: @bonfire-secondary;
+			}
+		}
+	}
+	.ant-layout-sider-trigger {
+		background: @bonfire-primary;
+	}
+}
+
+[data-theme="dark"] .ant-menu {
+	background: #1f1646;
+}
+
+[data-theme="dark"] .site-layout .site-layout-background {
+	background: #1f1646;
+}

@@ -1,54 +1,44 @@
 import React from "react";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from "@storybook/react/types-6-0";
+import { Button, ButtonProps } from "../molecules/Button";
+import { muiTheme } from "storybook-addon-material-ui";
+import { LeidosLight } from "../theme";
 
-import { Button } from "../molecules/Button";
-import { ButtonProps } from "antd/lib/button/button";
-import { DownloadOutlined } from "@ant-design/icons";
- 
+const namedTheme: any = { themeName: "Leidos Light", ...LeidosLight };
 export default {
 	title: "molecules/Button",
 	argTypes: {
-		label: {
+		color: {
+			name: "color",
+			type: { name: "string", required: false },
+			defaultValue: "primary",
 			control: {
-				type: "text",
+				type: "inline-radio",
+				options: ["default", "inherit", "primary", "secondary"],
 			},
 		},
-		danger: {
+		variant: {
+			name: "variant",
+			type: { name: "string", required: false },
+			defaultValue: "contained",
 			control: {
-				type: "boolean",
+				type: "inline-radio",
+				options: ["contained", "outlined", "text"],
 			},
 		},
-		loading: {
-			control: {
-				type: "boolean",
-			},
-		},
+
 		size: {
+			name: "size",
+			type: { name: "string", required: false },
+			defaultValue: "contained",
 			control: {
 				type: "inline-radio",
-				options: ["large", "small", "middle"],
-			},
-		},
-		shape: {
-			control: {
-				type: "inline-radio",
-				options: ["null", "round", "circle"],
-			},
-		},
-		type: {
-			control: {
-				type: "inline-radio",
-				options: ["text", "link", "ghost", "default", "primary", "dashed"],
-			},
-		},
-		htmlType: {
-			control: {
-				type: "inline-radio",
-				options: ["submit", "button", "reset"],
+				options: ["large", "medium", "small"],
 			},
 		},
 	},
+	decorators: [muiTheme([namedTheme, "Dark Theme", "Light Theme"])],
 } as Meta;
 
 const Template: Story<ButtonProps & { label?: string }> = (args) => {
@@ -59,27 +49,21 @@ const Template: Story<ButtonProps & { label?: string }> = (args) => {
 
 export const Primary = Template.bind({});
 Primary.args = {
-	type: "primary",
-	shape: "round",
+	color: 'primary'
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+	color: 'secondary'
 };
 
 export const Large = Template.bind({});
 Large.args = {
 	size: "large",
-	type: "primary",
-	shape: "round",
 };
 
 export const Small = Template.bind({});
 Small.args = {
 	size: "small",
-	type: "primary",
-	shape: "round",
 };
 
-export const Icon = Template.bind({});
-Icon.args = {
-	type: "primary",
-	shape: "round",
-	icon: <DownloadOutlined />,
-};

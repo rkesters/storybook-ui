@@ -16,17 +16,7 @@ module.exports = {
 				backgrounds: false,
 			},
 		},
-		{
-			name: "@storybook/preset-ant-design",
-			options: {
-				lessOptions: {
-					modifyVars: {
-						"primary-color": "#850F88",
-						"border-radius-base": "2px",
-					},
-				},
-			},
-		},
+		"storybook-addon-material-ui",
 		{
 			name: "@storybook/preset-create-react-app",
 			options: {
@@ -42,12 +32,17 @@ module.exports = {
 		// 'PRODUCTION' is used when building the static version of storybook.
 
 		// Make whatever fine-grained changes you need
-		/*config.module.rules.push({
+		config.module.rules.push({
 			test: /\.less$/,
-			loaders: ["style-loader", "css-loader", "less-loader"],
+			loaders: ["style-loader", "css-loader", {
+				loader: "less-loader",
+				options: {
+					lessOptions: {javascriptEnabled: true}
+				}
+			}],
 			include: path.resolve(__dirname, "../src/"),
 		});
-		*/
+		
 
 		// Return the altered config
 		return config;

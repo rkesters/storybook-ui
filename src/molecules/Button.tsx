@@ -1,15 +1,16 @@
-
 import React from "react";
-import { Button as AntButton } from "antd";
-import { ButtonProps } from "antd/lib/button/button";
+import {
+	Button as AntButton,
+	ButtonProps as MUIButtonProps,
+} from "@material-ui/core";
 
-const defaults: ButtonProps = { 
+export interface ButtonProps extends MUIButtonProps {}
+
+const defaults: ButtonProps = {
 	size: "large",
-  shape: "round",
+	variant: "contained",
 };
 export const Button = (props: ButtonProps) => {
-	const p: ButtonProps = { ...defaults, ...props };
-  console.log('Button');
-  console.dir(p);
+	const p: MUIButtonProps = { ...defaults, ...props };
 	return <AntButton {...p} />;
 };
